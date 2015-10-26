@@ -43,7 +43,12 @@
 
 			$(window).bind('hashchange', function(e) {
 				var loc = decodeURI(location.hash.replace('#', ''));
-				showContent( loc );
+				if ( loc == '' ) {
+					showContent(tabContent.first().attr('title'));
+				}
+				else {
+					showContent( loc );
+				}
 			});
 		});
 	};
