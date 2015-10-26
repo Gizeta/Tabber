@@ -40,6 +40,11 @@
 			});
 
 			$this.addClass('tabberlive');
+
+			$(window).bind('hashchange', function(e) {
+				var loc = location.hash.replace('#', '');
+				showContent( loc );
+			});
 		});
 	};
 })(jQuery);
