@@ -26,7 +26,7 @@
 				return true;
 			}
 			// setup initial state
-			var loc = decodeURI(location.hash.replace('#', ''));
+			var loc = decodeURI(location.hash.replace('#', '').replace(/\.([0-9A-F]{2})/g, "%$1"));
 			if ( loc == '' || !showContent(loc) ) {
 				showContent(tabContent.first().attr('title'));
 			}
@@ -42,7 +42,7 @@
 			$this.addClass('tabberlive');
 
 			$(window).bind('hashchange', function(e) {
-				var loc = decodeURI(location.hash.replace('#', ''));
+				var loc = decodeURI(location.hash.replace('#', '').replace(/\.([0-9A-F]{2})/g, "%$1"));
 				if ( loc == '' ) {
 					showContent(tabContent.first().attr('title'));
 				}
