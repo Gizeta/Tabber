@@ -26,7 +26,13 @@
 				return true;
 			}
 			// setup initial state
-			var loc = decodeURI(location.hash.replace('#', '').replace(/\.([0-9A-F]{2})/g, "%$1"));
+			var loc;
+			if (mw.config.get("wgInternalRedirectTargetUrl")) {
+				loc = decodeURI(mw.config.get("wgInternalRedirectTargetUrl").replace(/.+#/,'').replace(/\.([0-9A-F]{2})/g, "%$1"));
+			}
+			else {
+				loc = decodeURI(location.hash.replace('#', '').replace(/\.([0-9A-F]{2})/g, "%$1"));
+			}
 			if ( loc == '' || !showContent(loc) ) {
 				showContent(tabContent.first().attr('title'));
 			}
