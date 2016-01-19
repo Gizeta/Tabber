@@ -43,6 +43,7 @@
 				e.preventDefault();
 				location.hash = '#' + title;
 				showContent( title );
+				dispatchEvent(new CustomEvent('tabber:nav', {"detail": {"title": title}}));
 			});
 
 			$this.addClass('tabberlive');
